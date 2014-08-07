@@ -4,7 +4,7 @@
 
 This project enables PHP developers to use the [eBay API](https://go.developer.ebay.com/developers/ebay/documentation-tools/) in their PHP code, and build software using the [Bulk Data Exchange](https://developer.ebay.com/DevZone/large-merchant-services/Concepts/LMS_APIGuide.html#bdxservice) service. You can get started by [installing the SDK via Composer](http://devbay.net/sdk/guides/installation/) and by following the [Getting Started Guide](http://devbay.net/sdk/guides/getting-started/).
 
-## Features 
+## Features
 
   - Compatible with PHP 5.3.9 or greater.
   - Easy to install with [Composer](http://getcomposer.org/).
@@ -16,7 +16,7 @@ This project enables PHP developers to use the [eBay API](https://go.developer.e
   - [SDK Versions](http://devbay.net/sdk/guides/versions/) - A complete list of each SDK, and the API version they support.
   - [Sample Project](https://github.com/davidtsadler/ebay-sdk-examples) - Provides several examples of using the SDK.
   - [Google Group](https://groups.google.com/forum/#!forum/ebay-sdk-php) - Join for support with the SDK.
-  - [@devbaydotnet](https://twitter.com/devbaydotnet) - Follow on Twitter for announcements of releases, important changes and so on. 
+  - [@devbaydotnet](https://twitter.com/devbaydotnet) - Follow on Twitter for announcements of releases, important changes and so on.
 
 ## Requirements
 
@@ -57,13 +57,46 @@ This package can be installed with [Composer](http://getcomposer.org/).
      require 'vendor/autoload.php';
      ```
 
+## Example
+
+### List all jobs
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+use \DTS\eBaySDK\BulkDataExchange\Services;
+use \DTS\eBaySDK\BulkDataExchange\Types;
+
+// Instantiate an eBay service.
+$service = new Services\BulkDataExchangeService(array(
+    'authToken' => 'YOUR_PRODUCTION_USER_TOKEN_APPLICATION_KEY'
+));
+
+// Create the API request object.
+$request = new Types\GetJobsRequest();
+
+// Send the request.
+$response = $service->getJobs($request);
+
+// Output the response from the API.
+foreach($response->jobProfile as $jobProfile) {
+    printf("(%s) %s [%s]\n",
+        $jobProfile->jobId,
+        $jobProfile->jobType,
+        $jobProfile->jobStatus
+    );
+}
+```
+
 ## Project Goals
 
   - Be well maintained.
   - Be [well documented](http://devbay.net/sdk/guides/).
   - Be [well tested](https://github.com/davidtsadler/ebay-sdk-bulk-data-exchange/tree/master/test/DTS/eBaySDK/BulkDataExchange).
   - Be well supported with [working examples](https://github.com/davidtsadler/ebay-sdk-examples/blob/master/bulk-data-exchange/README.md).
-  
+
 ## Project Maturity
 
 This is a personal project that has been developed by me, [David T. Sadler](http://twitter.com/davidtsadler). I decided to create this project to make up for the lack of an official SDK for PHP. It is in no way endorsed, sponsored or maintained by eBay.
