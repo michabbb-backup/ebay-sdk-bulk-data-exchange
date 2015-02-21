@@ -17,8 +17,19 @@
 
 namespace DTS\eBaySDK\BulkDataExchange\Services;
 
+/**
+ * Base class for the BulkDataExchange service.
+ */
 class BulkDataExchangeBaseService extends \DTS\eBaySDK\Services\BaseService
 {
+    /**
+     * @var string Current version of the SDK
+     */
+    const VERSION = '0.1.0';
+
+    /**
+     * Constants for the various HTTP headers required by the API.
+     */
     const HDR_API_VERSION = 'X-EBAY-SOA-SERVICE-VERSION';
     const HDR_AUTH_TOKEN = 'X-EBAY-SOA-SECURITY-TOKEN';
     const HDR_CONTENT_TYPE = 'CONTENT-TYPE';
