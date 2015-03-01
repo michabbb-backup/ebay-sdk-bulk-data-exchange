@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.2 - 2015-03-01
+
+### Documentation
+
+* Correct link to examples.
+
+### Tests
+
+* Add PHP 5.6 and HHVM to travis settings.
+
 ## 0.1.1 - 2015-03-01
 
 ### Documentation
