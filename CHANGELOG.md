@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Documentation
+
+State code is generated.
+
 ### Features
 
 * Allow manual installation of SDK via PHP Phar or Zip archive.
